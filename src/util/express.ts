@@ -2,10 +2,11 @@ import { json } from "body-parser";
 import cors from "cors";
 import express, { Express, NextFunction, Request, Response } from "express";
 import helmet from "helmet";
+
 import requestLogger from "../middlewares/requestLogger";
 import ResponseHandler from "./response-handler";
 
-export interface ExpressRequest extends Request {}
+export type ExpressRequest = Request;
 
 export const createApp = (
   name = "Products-manager-api",

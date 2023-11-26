@@ -1,20 +1,20 @@
-import { createApp } from "./util/Express";
+import { createApp } from "./util/express";
 import { logger } from "./util/logger";
 
-const name = "Kwiksell Merchant Service";
+const name = "Product Service";
 
-const init = () => createApp(name, bindMerchantRoutes);
+// const init = () => createApp(name, bindMerchantRoutes);
 
-(async () => {
-  validateEnv();
+// (async () => {
+//   validateEnv();
 
-  logger.info("Connecting to database");
-  await initDatabase();
+//   logger.info("Connecting to database");
+//   await initDatabase();
 
-  logger.info("Starting Redis connection", { tag });
-  getRedisConnection();
+//   logger.info("Starting Redis connection", { tag });
+//   getRedisConnection();
 
-  init().listen(MERCHANT_PORT, () => {
-    logger.info(`${name} Started successfully on :${MERCHANT_PORT}`);
-  });
-})();
+//   init().listen(MERCHANT_PORT, () => {
+//     logger.info(`${name} Started successfully on :${MERCHANT_PORT}`);
+//   });
+// })();
