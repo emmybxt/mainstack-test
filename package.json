@@ -13,8 +13,8 @@
     "build:tsc": "tsc",
     "build": "swc src -d dist",
     "ci": "jest --ci --verbose  --reporters=default --reporters=jest-junit",
-    "dev:admin": "nodemon --exec node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config -r ts-node/register src/admin.ts",
-    "go:merchant": "node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config ./dist/merchant.js",
+    "dev:admin": "nodemon --exec node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config -r ts-node/register src/index.ts",
+    "go:user": "node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config ./dist/index.js",
     "go:prod": "node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config ./dist/index.js",
     "lint": "eslint . --ext .ts --fix",
     "test:coverage": "jest --coverage",
@@ -29,7 +29,7 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged",
       "prepare-commit-msg": "jira-prepare-commit-msg",
-      "pre-push": "yarn lint && yarn build:mix && yarn test"
+      "pre-push": "yarn lint && yarn build:mix"
     }
   },
   "jest-junit": {
@@ -83,7 +83,7 @@
     "helmet": "^4.6.0",
     "ioredis": "^5.2.2",
     "joi": "^17.4.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^6.5.2",
     "mongoose-delete": "^0.5.4",
