@@ -1,6 +1,7 @@
 import { PORT } from './config/env';
 import { initDatabase } from './config/mongo';
 import { getRedisConnection } from './config/redis';
+import { validateEnv } from './config/validate';
 import { createApp } from './util/express';
 import { logger } from './util/logger';
 import { bindUserRoutes } from './util/useRoutes';
@@ -10,7 +11,7 @@ const name = 'Product Service';
 const init = () => createApp(name, bindUserRoutes);
 
 (async () => {
-  //   validateEnv();
+  validateEnv();
 
   logger.info('Connecting to database');
   await initDatabase();
