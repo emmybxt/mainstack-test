@@ -1,7 +1,8 @@
+import { Types } from 'mongoose';
 import randomstring from 'randomstring';
+
 import { IProduct, Product } from '../models/products';
 import { logger } from '../util/logger';
-import { Types } from 'mongoose';
 
 class ProductRepository {
   async create({

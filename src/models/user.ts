@@ -7,7 +7,7 @@ export interface IUser extends Document {
   email: string;
   phoneNumber: string;
   password: string;
-  deleted: boolean;
+  deleted?: boolean;
   comparePassword(password: string): boolean;
   deletedAt?: Date;
 }

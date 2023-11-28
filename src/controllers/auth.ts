@@ -4,7 +4,6 @@ import * as authHelper from '../helpers/userhelpers';
 import UserRepository from '../repository/UserRepository';
 import { ExpressRequest } from '../util/express';
 import ResponseHandler from '../util/response-handler';
-import { validateLogin, validateSignUp } from '../validations/user';
 
 export async function signUp(
   req: ExpressRequest,
@@ -14,13 +13,6 @@ export async function signUp(
   const { firstname, lastname, email, password, phoneNumber } = req.body;
 
   try {
-    const { error } = validateSignUp(req.body);
-    if (error) {
-      return ResponseHandler.sendErrorResponse({
-        res,
-        error: error.details[0].message,
-      });
-    }
     const checkExistingEmail = await UserRepository.getOneBy({ email });
 
     if (checkExistingEmail) {
@@ -60,14 +52,6 @@ export async function login(
   next: NextFunction,
 ): Promise<Response | void> {
   const { email, password } = req.body;
-
-  const { error } = validateLogin(req.body);
-  if (error) {
-    return ResponseHandler.sendErrorResponse({
-      res,
-      error: error.details[0].message,
-    });
-  }
 
   try {
     const user = await UserRepository.getOneBy({ email }, false);

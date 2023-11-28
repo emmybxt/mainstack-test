@@ -8,7 +8,6 @@ export const initDatabase = async () => {
   mongoose
     .connect(`${MONGO_URL}`, {
       connectTimeoutMS: 10000,
-      keepAlive: true,
       socketTimeoutMS: 0,
       dbName: MONGO_NAME,
     })
@@ -16,7 +15,6 @@ export const initDatabase = async () => {
       logger.info(
         `Successfully Connected to MongoDB. ${connection.host}:${connection.port}/${connection.db.databaseName}`,
       );
-      mongoose.set('strictQuery', true);
     })
     .catch((error) => {
       const nextConnect = ++attempts * (Math.random() * 10000);

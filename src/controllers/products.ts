@@ -1,4 +1,5 @@
 import { NextFunction, Response } from 'express';
+
 import { throwIfUndefined } from '../helpers';
 import ProductRepository from '../repository/ProductRepositiory';
 import { ExpressRequest } from '../util/express';
