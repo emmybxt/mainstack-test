@@ -5,13 +5,13 @@
   "main": "index.js",
   "engines": {
     "node": ">= 16.15",
-    "npm": "please-use-yarn",
     "yarn": ">= 1.19.1"
   },
   "scripts": {
     "build:mix": "swc src -d dist & tsc --pretty --skipLibCheck --noEmit",
     "build:tsc": "tsc",
     "build": "swc src -d dist",
+    "start": "node dist/index.js",
     "ci": "jest --ci --verbose  --reporters=default --reporters=jest-junit",
     "dev:admin": "nodemon --exec node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config -r ts-node/register src/index.ts",
     "go:user": "node --trace-warnings --async-stack-traces --report-uncaught-exception --report-on-fatalerror --report-filename=stderr -r dotenv/config ./dist/index.js",
