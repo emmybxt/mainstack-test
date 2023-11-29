@@ -27,7 +27,7 @@ class ProductRepository {
       description,
       price,
       quantity,
-      images: [images],
+      images,
       sku,
       userId,
     };
