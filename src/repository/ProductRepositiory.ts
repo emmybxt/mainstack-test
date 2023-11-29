@@ -54,23 +54,36 @@ class ProductRepository {
     deleted?: boolean;
     images?: string;
   }): Promise<IProduct> {
-    if (name) product.name = name;
-    if (description) product.description = description;
-    if (price) product.price = price;
-    if (quantity) product.quantity = quantity;
-    if (sku) product.sku = sku;
-    if (deleted) product.deleted = deleted;
+    const updateData: Partial<IProduct> = {};
+
+    if (name) updateData.name = name;
+    if (description) updateData.description = description;
+    if (price) updateData.price = price;
+    if (quantity) updateData.quantity = quantity;
+    if (sku) updateData.sku = sku;
+    if (deleted) updateData.deleted = deleted;
     if (images) {
       if (product.images) {
-        if (!product.images.includes(images)) product.images.push(images);
+        if (!product.images.includes(images)) {
+          updateData.images = [...product.images, images];
+        }
       } else {
-        product.images = [images];
+        updateData.images = [images];
       }
     }
 
-    return product.save();
-  }
+    const updatedProduct = await Product.findOneAndUpdate(
+      { _id: product._id },
+      updateData,
+      { new: true }, // Return the updated document
+    );
 
+    if (!updatedProduct) {
+      throw new Error('Failed to update product');
+    }
+
+    return updatedProduct;
+  }
   public async getOneBy(
     query: object,
     leanVersion = true,
