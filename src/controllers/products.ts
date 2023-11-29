@@ -56,7 +56,7 @@ export async function updateProduct(
   next: NextFunction,
 ): Promise<Response | void> {
   const { productId } = req.params;
-  const { name, description, price, quantity } = req.body;
+  const { name, description, price, quantity, deleted } = req.body;
 
   try {
     const user = throwIfUndefined(req.user, 'req.user');
@@ -79,6 +79,7 @@ export async function updateProduct(
       description,
       price,
       quantity,
+      deleted,
     });
 
     return ResponseHandler.sendSuccessResponse({
