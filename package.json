@@ -49,6 +49,7 @@
     "@types/jest": "^28.1.6",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.0",
+    "@types/lodash": "^4.14.202",
     "@types/mongoose-delete": "*",
     "@types/mongoose-unique-validator": "*",
     "@types/morgan": "^1.9.2",
@@ -73,7 +74,6 @@
   },
   "dependencies": {
     "@hapi/joi-date": "^2.0.1",
-    "@types/lodash": "^4.14.202",
     "app-root-path": "^3.0.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
