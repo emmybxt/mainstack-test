@@ -43,6 +43,7 @@ export async function validateUpdateProduct(
     price: Joi.number(),
     quantity: Joi.number(),
     images: Joi.array().items(Joi.string()),
+    deleted: Joi.boolean(),
   });
 
   const validation = schema.validate({ ...req.body, ...req.params });
