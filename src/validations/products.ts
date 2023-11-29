@@ -14,7 +14,7 @@ export async function validateCreateProduct(
     description: Joi.string().required(),
     price: Joi.number().required(),
     quantity: Joi.number().required(),
-    images: Joi.array().items(Joi.string()).required(),
+    images: Joi.array().items(Joi.string()),
   });
 
   const validation = schema.validate(req.body);

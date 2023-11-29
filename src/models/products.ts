@@ -32,7 +32,7 @@ const productSchema = new Schema<IProduct>(
       type: Number,
       required: true,
     },
-    images: [{ required: false, type: String }],
+    images: [{ type: String }],
     sku: {
       index: true,
       sparse: true,
