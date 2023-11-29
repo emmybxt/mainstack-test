@@ -1,5 +1,6 @@
 import { createMock } from '@golevelup/ts-jest';
 import { Response } from 'express';
+
 import { login, signUp } from '../controllers/auth';
 import * as authHelper from '../helpers/userhelpers';
 import { IUser } from '../models/user';
@@ -15,7 +16,7 @@ describe('Auth Controller', () => {
   const nextFn = jest.fn();
   let resMock: Response;
   let createUserSpy: jest.SpyInstance;
-  let generateUserBearerTokenSpy: jest.SpyInstance;
+  // let generateUserBearerTokenSpy: jest.SpyInstance;
   let pickUserDetailsSpy: jest.SpyInstance;
   let getOneBySpy: jest.SpyInstance;
   let sendSuccessResponseSpy: jest.SpyInstance;
@@ -27,10 +28,10 @@ describe('Auth Controller', () => {
   beforeEach(() => {
     getOneBySpy = jest.spyOn(UserRepository, 'getOneBy');
     createUserSpy = jest.spyOn(UserRepository, 'create');
-    generateUserBearerTokenSpy = jest.spyOn(
-      authHelper,
-      'generateUserBearerToken',
-    );
+    // generateUserBearerTokenSpy = jest.spyOn(
+    //   authHelper,
+    //   'generateUserBearerToken',
+    // );
     pickUserDetailsSpy = jest.spyOn(authHelper, 'pickUserDetails');
     sendSuccessResponseSpy = jest.spyOn(ResponseHandler, 'sendSuccessResponse');
     resMock = createMock<Response>();

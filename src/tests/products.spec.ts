@@ -7,8 +7,8 @@
 // });
 
 import { createMock } from '@golevelup/ts-jest';
-
 import { Response } from 'express';
+
 import { createProduct, updateProduct } from '../controllers/products';
 import { IUser } from '../models/user';
 import ProductRepository from '../repository/ProductRepositiory';
@@ -19,9 +19,7 @@ jest.mock('../repository/ProductRepositiory');
 jest.mock('../util/response-handler');
 
 describe('Product Controller', () => {
-  let mockRequest: any;
   let mockResponse: any;
-  let mockNext: any;
 
   const nextFn = jest.fn();
   let resMock: Response;
@@ -81,8 +79,6 @@ describe('Product Controller', () => {
       const req = createMock<ExpressRequest>();
       req.body = mockProduct;
       req.user = user;
-
-      console.log(req);
 
       await createProduct(req, resMock, nextFn);
 

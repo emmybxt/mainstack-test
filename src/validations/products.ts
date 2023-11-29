@@ -1,6 +1,6 @@
+import { NextFunction, Response } from 'express';
 import Joi from 'joi';
 
-import { NextFunction, Response } from 'express';
 import { ExpressRequest } from '../util/express';
 import ResponseHandler from '../util/response-handler';
 
