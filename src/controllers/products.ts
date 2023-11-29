@@ -1,5 +1,6 @@
 import { NextFunction, Response } from 'express';
 
+import { Types } from 'mongoose';
 import { throwIfUndefined } from '../helpers';
 import ProductRepository from '../repository/ProductRepositiory';
 import { ExpressRequest } from '../util/express';
@@ -115,7 +116,7 @@ export async function getUserProducts(
     const user = throwIfUndefined(req.user, 'req.user');
 
     const products = await ProductRepository.getUserProducts({
-      userId: user._id,
+      userId: new Types.ObjectId(user._id),
       deleted: false,
     });
 
