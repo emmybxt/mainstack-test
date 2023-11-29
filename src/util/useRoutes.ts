@@ -5,5 +5,5 @@ import productRoutes from '../routes/products';
 
 export const bindUserRoutes = (app: Express): void => {
   app.use('/v1/auth', authRoutes);
-  app.use('/v1/product/', productRoutes);
+  app.use('/v1/product', productRoutes);
 };
